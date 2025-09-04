@@ -1,0 +1,15 @@
+[2025-08-26T04:21:24.230+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.select_best scheduled__2025-08-25T00:00:00+00:00 [queued]>
+[2025-08-26T04:21:24.234+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.select_best scheduled__2025-08-25T00:00:00+00:00 [queued]>
+[2025-08-26T04:21:24.234+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-08-26T04:21:24.256+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): select_best> on 2025-08-25 00:00:00+00:00
+[2025-08-26T04:21:24.278+0200] {standard_task_runner.py:57} INFO - Started process 55234 to run task
+[2025-08-26T04:21:24.275+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'select_best', 'scheduled__2025-08-25T00:00:00+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmph9jjuuws']
+[2025-08-26T04:21:24.291+0200] {standard_task_runner.py:85} INFO - Job 40: Subtask select_best
+[2025-08-26T04:21:24.346+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.select_best scheduled__2025-08-25T00:00:00+00:00 [running]> on host macbook-pro-de-adeline-1.home
+[2025-08-26T04:21:24.401+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='select_best' AIRFLOW_CTX_EXECUTION_DATE='2025-08-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-25T00:00:00+00:00'
+[2025-08-26T04:21:24.405+0200] {logging_mixin.py:154} INFO - 🏆 Démarrage de la sélection du meilleur dataset...
+[2025-08-26T04:21:24.408+0200] {logging_mixin.py:154} INFO - ✅ Sélection terminée avec succès
+[2025-08-26T04:21:24.409+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'best_method': 'auto-selected'}
+[2025-08-26T04:21:24.436+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=select_best, execution_date=20250825T000000, start_date=20250826T022124, end_date=20250826T022124
+[2025-08-26T04:21:24.472+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-08-26T04:21:24.494+0200] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,84 @@
+[2025-08-25T14:05:06.948+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [queued]>
+[2025-08-25T14:05:06.950+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [queued]>
+[2025-08-25T14:05:06.950+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-08-25T14:05:06.955+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): check_data> on 2025-08-24 00:00:00+00:00
+[2025-08-25T14:05:06.963+0200] {standard_task_runner.py:57} INFO - Started process 31917 to run task
+[2025-08-25T14:05:06.967+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'check_data', 'scheduled__2025-08-24T00:00:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmp_18vtzii']
+[2025-08-25T14:05:06.969+0200] {standard_task_runner.py:85} INFO - Job 18: Subtask check_data
+[2025-08-25T14:05:07.007+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [running]> on host pc-481.home
+[2025-08-25T14:05:07.065+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='check_data' AIRFLOW_CTX_EXECUTION_DATE='2025-08-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-24T00:00:00+00:00'
+[2025-08-25T14:05:07.069+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:05:07,068 - fraud_detection - INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:05:07.068+0200] {fraud_pipeline.py:94} INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:05:07.073+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:05:07,072 - fraud_detection - INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:05:07.072+0200] {fraud_pipeline.py:104} INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:05:07.918+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:05:07,916 - fraud_detection - INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:05:07.916+0200] {fraud_pipeline.py:146} INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:05:07.922+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'message': 'Dataset valide', 'data_quality': {'rows_count': 284807, 'columns_count': 31, 'missing_percentage': np.float64(0.0), 'fraud_percentage': 0.1727485630620034, 'imbalance_ratio': 577.8760162601626}, 'business_validation': {'time_range_valid': np.True_, 'amount_range_valid': np.True_, 'class_values_valid': True}, 'class_distribution': {0: 284315, 1: 492}}
+[2025-08-25T14:05:07.925+0200] {xcom.py:661} ERROR - Object of type bool is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your airflow config or make sure to decorate your object with attr.
+[2025-08-25T14:05:07.930+0200] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 91, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/serialization/serde.py", line 178, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'numpy.bool'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2479, in xcom_push
+    XCom.set(
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/xcom.py", line 244, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/xcom.py", line 659, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 104, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 93, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+[2025-08-25T14:05:07.967+0200] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=fraud_detection_pipeline, task_id=check_data, execution_date=20250824T000000, start_date=20250825T120506, end_date=20250825T120507
+[2025-08-25T14:05:07.972+0200] {standard_task_runner.py:104} ERROR - Failed to execute job 18 for task check_data (Object of type bool is not JSON serializable; 31917)
+[2025-08-25T14:05:08.000+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-08-25T14:05:08.010+0200] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-25T14:17:43.420+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [queued]>
+[2025-08-25T14:17:43.423+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [queued]>
+[2025-08-25T14:17:43.423+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-08-25T14:17:43.430+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): check_data> on 2025-08-24 00:00:00+00:00
+[2025-08-25T14:17:43.440+0200] {standard_task_runner.py:57} INFO - Started process 32945 to run task
+[2025-08-25T14:17:43.446+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'check_data', 'scheduled__2025-08-24T00:00:00+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmp6rwm8lf5']
+[2025-08-25T14:17:43.453+0200] {standard_task_runner.py:85} INFO - Job 24: Subtask check_data
+[2025-08-25T14:17:43.498+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-08-24T00:00:00+00:00 [running]> on host pc-481.home
+[2025-08-25T14:17:43.541+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='check_data' AIRFLOW_CTX_EXECUTION_DATE='2025-08-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-24T00:00:00+00:00'
+[2025-08-25T14:17:43.544+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:17:43,543 - fraud_detection - INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:17:43.543+0200] {fraud_pipeline.py:94} INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:17:43.550+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:17:43,549 - fraud_detection - INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:17:43.549+0200] {fraud_pipeline.py:104} INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:17:44.915+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:17:44,913 - fraud_detection - INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:17:44.913+0200] {fraud_pipeline.py:150} INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:17:44.917+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'message': 'Dataset valide', 'data_quality': {'rows_count': 284807, 'columns_count': 31, 'missing_percentage': 0.0, 'fraud_percentage': 0.1727485630620034, 'imbalance_ratio': 577.8760162601626}, 'business_validation': {'time_range_valid': True, 'amount_range_valid': True, 'class_values_valid': True}, 'class_distribution': {0: 284315, 1: 492}}
+[2025-08-25T14:17:44.932+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=check_data, execution_date=20250824T000000, start_date=20250825T121743, end_date=20250825T121744
+[2025-08-25T14:17:44.983+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-08-25T14:17:45.005+0200] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,142 @@
+{
+    "id": null,
+    "title": "🏦 Dashboard Anti-Fraude Fluzz",
+    "tags": ["fraud", "detection", "monitoring"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "📊 Taux de Détection des Fraudes",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "fraud_detection_rate",
+            "refId": "A",
+            "legendFormat": "Taux de Détection"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 0.7},
+                {"color": "green", "value": 0.8}
+              ]
+            },
+            "unit": "percentunit",
+            "min": 0,
+            "max": 1,
+            "displayName": "Taux de Détection"
+          },
+          "overrides": []
+        },
+        "gridPos": {"h": 12, "w": 8, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "🚨 Taux de Faux Positifs",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "fraud_false_positive_rate",
+            "refId": "A",
+            "legendFormat": "Taux Faux Positifs"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 0.01},
+                {"color": "red", "value": 0.02}
+              ]
+            },
+            "unit": "percentunit",
+            "min": 0,
+            "max": 0.05,
+            "displayName": "Taux Faux Positifs"
+          },
+          "overrides": []
+        },
+        "gridPos": {"h": 12, "w": 8, "x": 8, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "📈 Score de Dérive des Données",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "fraud_data_drift_score",
+            "refId": "A",
+            "legendFormat": "Score de Dérive"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 0.3},
+                {"color": "red", "value": 0.5}
+              ]
+            },
+            "unit": "short",
+            "min": 0,
+            "max": 1,
+            "displayName": "Score de Dérive"
+          },
+          "overrides": []
+        },
+        "gridPos": {"h": 12, "w": 8, "x": 16, "y": 0}
+      }
+    ],
+    "time": {"from": "now-1h", "to": "now"},
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 2,
+    "gnetId": null
+}

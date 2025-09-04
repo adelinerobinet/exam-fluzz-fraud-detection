@@ -1,0 +1,14 @@
+[2025-08-01T14:22:52.348+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.notify manual__2025-08-01T12:22:37.867873+00:00 [queued]>
+[2025-08-01T14:22:52.351+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.notify manual__2025-08-01T12:22:37.867873+00:00 [queued]>
+[2025-08-01T14:22:52.351+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-08-01T14:22:52.357+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): notify> on 2025-08-01 12:22:37.867873+00:00
+[2025-08-01T14:22:52.362+0200] {standard_task_runner.py:57} INFO - Started process 6686 to run task
+[2025-08-01T14:22:52.366+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'notify', 'manual__2025-08-01T12:22:37.867873+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmpejg641t7']
+[2025-08-01T14:22:52.372+0200] {standard_task_runner.py:85} INFO - Job 13: Subtask notify
+[2025-08-01T14:22:52.430+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.notify manual__2025-08-01T12:22:37.867873+00:00 [running]> on host pc-1133.home
+[2025-08-01T14:22:52.482+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='notify' AIRFLOW_CTX_EXECUTION_DATE='2025-08-01T12:22:37.867873+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-01T12:22:37.867873+00:00'
+[2025-08-01T14:22:52.485+0200] {logging_mixin.py:154} INFO - ✅ Notification envoyée
+[2025-08-01T14:22:52.486+0200] {python.py:194} INFO - Done. Returned value was: None
+[2025-08-01T14:22:52.493+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=notify, execution_date=20250801T122237, start_date=20250801T122252, end_date=20250801T122252
+[2025-08-01T14:22:52.507+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-08-01T14:22:52.516+0200] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

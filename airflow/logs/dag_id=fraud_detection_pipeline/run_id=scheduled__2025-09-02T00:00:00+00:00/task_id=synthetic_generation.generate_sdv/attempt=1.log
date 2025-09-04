@@ -1,0 +1,15 @@
+[2025-09-03T02:44:54.998+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.synthetic_generation.generate_sdv scheduled__2025-09-02T00:00:00+00:00 [queued]>
+[2025-09-03T02:44:55.000+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.synthetic_generation.generate_sdv scheduled__2025-09-02T00:00:00+00:00 [queued]>
+[2025-09-03T02:44:55.000+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2025-09-03T02:44:55.005+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): synthetic_generation.generate_sdv> on 2025-09-02 00:00:00+00:00
+[2025-09-03T02:44:55.014+0200] {standard_task_runner.py:57} INFO - Started process 29196 to run task
+[2025-09-03T02:44:55.017+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'synthetic_generation.generate_sdv', 'scheduled__2025-09-02T00:00:00+00:00', '--job-id', '59', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmpeqmgk4ke']
+[2025-09-03T02:44:55.020+0200] {standard_task_runner.py:85} INFO - Job 59: Subtask synthetic_generation.generate_sdv
+[2025-09-03T02:44:55.054+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.synthetic_generation.generate_sdv scheduled__2025-09-02T00:00:00+00:00 [running]> on host macbook-pro-de-adeline-1.home
+[2025-09-03T02:44:55.087+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='synthetic_generation.generate_sdv' AIRFLOW_CTX_EXECUTION_DATE='2025-09-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-02T00:00:00+00:00'
+[2025-09-03T02:44:55.089+0200] {logging_mixin.py:154} INFO - 🤖 Démarrage de la génération SDV...
+[2025-09-03T02:44:55.090+0200] {logging_mixin.py:154} INFO - ✅ Génération SDV terminée avec succès
+[2025-09-03T02:44:55.090+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'samples': 2000, 'method': 'SDV'}
+[2025-09-03T02:44:55.101+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=synthetic_generation.generate_sdv, execution_date=20250902T000000, start_date=20250903T004454, end_date=20250903T004455
+[2025-09-03T02:44:55.139+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-03T02:44:55.152+0200] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,65 @@
+[2025-08-25T14:12:36.137+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data manual__2025-08-25T12:12:26.607779+00:00 [queued]>
+[2025-08-25T14:12:36.139+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data manual__2025-08-25T12:12:26.607779+00:00 [queued]>
+[2025-08-25T14:12:36.139+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-08-25T14:12:36.144+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): check_data> on 2025-08-25 12:12:26.607779+00:00
+[2025-08-25T14:12:36.154+0200] {standard_task_runner.py:57} INFO - Started process 32369 to run task
+[2025-08-25T14:12:36.158+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'check_data', 'manual__2025-08-25T12:12:26.607779+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmpa4_siv_9']
+[2025-08-25T14:12:36.166+0200] {standard_task_runner.py:85} INFO - Job 23: Subtask check_data
+[2025-08-25T14:12:36.214+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.check_data manual__2025-08-25T12:12:26.607779+00:00 [running]> on host pc-481.home
+[2025-08-25T14:12:36.272+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='check_data' AIRFLOW_CTX_EXECUTION_DATE='2025-08-25T12:12:26.607779+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-25T12:12:26.607779+00:00'
+[2025-08-25T14:12:36.276+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:12:36,275 - fraud_detection - INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:12:36.275+0200] {fraud_pipeline.py:94} INFO - 🔍 Démarrage de la vérification des données...
+[2025-08-25T14:12:36.280+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:12:36,279 - fraud_detection - INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:12:36.279+0200] {fraud_pipeline.py:104} INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-08-25T14:12:37.105+0200] {logging_mixin.py:154} WARNING - 2025-08-25 14:12:37,104 - fraud_detection - INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:12:37.104+0200] {fraud_pipeline.py:146} INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-08-25T14:12:37.108+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'message': 'Dataset valide', 'data_quality': {'rows_count': 284807, 'columns_count': 31, 'missing_percentage': np.float64(0.0), 'fraud_percentage': 0.1727485630620034, 'imbalance_ratio': 577.8760162601626}, 'business_validation': {'time_range_valid': np.True_, 'amount_range_valid': np.True_, 'class_values_valid': True}, 'class_distribution': {0: 284315, 1: 492}}
+[2025-08-25T14:12:37.113+0200] {xcom.py:661} ERROR - Object of type bool is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your airflow config or make sure to decorate your object with attr.
+[2025-08-25T14:12:37.115+0200] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 91, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/serialization/serde.py", line 178, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'numpy.bool'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2479, in xcom_push
+    XCom.set(
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/xcom.py", line 244, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/models/xcom.py", line 659, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 104, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/.venv/lib/python3.11/site-packages/airflow/utils/json.py", line 93, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/adelinerobinet/.pyenv/versions/3.11.4/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+[2025-08-25T14:12:37.127+0200] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=fraud_detection_pipeline, task_id=check_data, execution_date=20250825T121226, start_date=20250825T121236, end_date=20250825T121237
+[2025-08-25T14:12:37.132+0200] {standard_task_runner.py:104} ERROR - Failed to execute job 23 for task check_data (Object of type bool is not JSON serializable; 32369)
+[2025-08-25T14:12:37.143+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-08-25T14:12:37.167+0200] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

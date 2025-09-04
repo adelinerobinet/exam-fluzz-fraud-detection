@@ -1,0 +1,21 @@
+[2025-09-02T02:22:48.738+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.notify scheduled__2025-09-01T00:00:00+00:00 [queued]>
+[2025-09-02T02:22:48.741+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.notify scheduled__2025-09-01T00:00:00+00:00 [queued]>
+[2025-09-02T02:22:48.741+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-09-02T02:22:48.747+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): notify> on 2025-09-01 00:00:00+00:00
+[2025-09-02T02:22:48.757+0200] {standard_task_runner.py:57} INFO - Started process 96504 to run task
+[2025-09-02T02:22:48.761+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'notify', 'scheduled__2025-09-01T00:00:00+00:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmppfwdhaq0']
+[2025-09-02T02:22:48.766+0200] {standard_task_runner.py:85} INFO - Job 56: Subtask notify
+[2025-09-02T02:22:48.800+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.notify scheduled__2025-09-01T00:00:00+00:00 [running]> on host macbookpro.home
+[2025-09-02T02:22:48.828+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='notify' AIRFLOW_CTX_EXECUTION_DATE='2025-09-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-01T00:00:00+00:00'
+[2025-09-02T02:22:48.831+0200] {logging_mixin.py:154} WARNING - 2025-09-02 02:22:48,830 - fraud_detection - INFO - 📧 Préparation des notifications...
+[2025-09-02T02:22:48.830+0200] {fraud_pipeline.py:341} INFO - 📧 Préparation des notifications...
+[2025-09-02T02:22:48.843+0200] {logging_mixin.py:154} WARNING - 2025-09-02 02:22:48,843 - fraud_detection - INFO - ✅ Rapport généré: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/reports/pipeline_report_20250902_022248.md
+[2025-09-02T02:22:48.843+0200] {fraud_pipeline.py:386} INFO - ✅ Rapport généré: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/reports/pipeline_report_20250902_022248.md
+[2025-09-02T02:22:48.845+0200] {logging_mixin.py:154} WARNING - 2025-09-02 02:22:48,844 - fraud_detection - INFO - 📊 Statut global: success
+[2025-09-02T02:22:48.844+0200] {fraud_pipeline.py:387} INFO - 📊 Statut global: success
+[2025-09-02T02:22:48.846+0200] {logging_mixin.py:154} WARNING - 2025-09-02 02:22:48,846 - fraud_detection - INFO - 📧 Destinataires configurés: ['data-science@fluzz.com']
+[2025-09-02T02:22:48.846+0200] {fraud_pipeline.py:388} INFO - 📧 Destinataires configurés: ['data-science@fluzz.com']
+[2025-09-02T02:22:48.847+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'notifications_sent': True, 'global_pipeline_status': 'success', 'report_path': '/Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/reports/pipeline_report_20250902_022248.md', 'recipients': ['data-science@fluzz.com'], 'results_summary': {'data_validation': 'success', 'preprocessing': 'success', 'sdv_generation': 'success', 'smote_generation': 'success', 'best_selection': 'success'}}
+[2025-09-02T02:22:48.853+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=notify, execution_date=20250901T000000, start_date=20250902T002248, end_date=20250902T002248
+[2025-09-02T02:38:40.549+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-02T02:38:40.585+0200] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

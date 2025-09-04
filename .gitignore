@@ -1,0 +1,277 @@
+# ============================================================================
+# GITIGNORE POUR PROJET ML AIRFLOW - DÉTECTION DE FRAUDE
+# ============================================================================
+
+# ============================================================================
+# ENVIRONNEMENTS VIRTUELS PYTHON
+# ============================================================================
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ============================================================================
+# PYTHON - FICHIERS COMPILÉS ET CACHE
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================================================
+# AIRFLOW - CONFIGURATION ET DONNÉES RUNTIME
+# ============================================================================
+airflow/
+!airflow/.gitkeep
+airflow.cfg
+airflow.db
+airflow.db-shm
+airflow.db-wal
+webserver_config.py
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# Logs Airflow
+logs/
+*.log
+
+# ============================================================================
+# DONNÉES - FICHIERS VOLUMINEUX ET SENSIBLES
+# ============================================================================
+# Données brutes (à conserver dans Git si < 100MB, sinon utiliser Git LFS)
+data/raw/*.csv
+data/raw/*.parquet
+
+# Données traitées (générer via pipeline)
+data/processed/
+data/synthetic/
+
+# Modèles entraînés (volumineux)
+models/
+!models/.gitkeep
+
+# ============================================================================
+# NOTEBOOKS JUPYTER
+# ============================================================================
+# Outputs des notebooks (nettoyer avant commit)
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Notebook avec outputs (optionnel - décommente si tu veux les ignorer)
+# *.ipynb
+
+# ============================================================================
+# IDE ET ÉDITEURS
+# ============================================================================
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ============================================================================
+# SYSTÈME D'EXPLOITATION
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# CONFIGURATION ET SECRETS
+# ============================================================================
+# Variables d'environnement
+.env
+.env.local
+.env.*.local
+config/secrets.yml
+config/credentials.yml
+
+# Clés API et tokens
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+token.json
+
+# ============================================================================
+# DOCUMENTATION ET RAPPORTS
+# ============================================================================
+# LaTeX
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# HTML/CSS
+*.css.map
+*.sass.map
+*.scss.map
+
+# ============================================================================
+# TESTS ET COVERAGE
+# ============================================================================
+.coverage
+.pytest_cache/
+.tox/
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+.cache
+nosetests.xml
+
+# ============================================================================
+# OUTILS DE DÉVELOPPEMENT
+# ============================================================================
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Profiling
+*.prof
+
+# ============================================================================
+# FICHIERS TEMPORAIRES ET BACKUP
+# ============================================================================
+# Temporaires généraux
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ============================================================================
+# DOCKER (SI UTILISÉ)
+# ============================================================================
+# Ignorer les volumes et builds
+docker-compose.override.yml
+.dockerignore
+
+# ============================================================================
+# MONITORING ET MÉTRIQUES
+# ============================================================================
+# Prometheus
+*.prom
+
+# Grafana
+*.db
+
+# ============================================================================
+# SPÉCIFIQUE AU PROJET
+# ============================================================================
+# Fichiers de pipeline temporaires
+pipeline_*.tmp
+temp_*
+
+# Rapports volumineux
+reports/large_*
+reports/*.pdf
+reports/pipeline_report_*
+
+# Données d'expérimentation
+experiments/
+mlruns/
+.mlflow/
+
+# Préparation orale (contenu privé)
+oral/
+
+# ============================================================================
+# CONSERVATION EXPLICITE (GARDER CES FICHIERS)
+# ============================================================================
+# Fichiers importants à garder
+!requirements.txt
+!requirements-notebooks.txt
+!pipelines/airflow/*.py
+!notebook/*.ipynb
+!doc/*.md
+!scripts/*.sh
+!src/
+!config/
+!docker/
+
+# Répertoires vides (avec .gitkeep)
+!**/.gitkeep

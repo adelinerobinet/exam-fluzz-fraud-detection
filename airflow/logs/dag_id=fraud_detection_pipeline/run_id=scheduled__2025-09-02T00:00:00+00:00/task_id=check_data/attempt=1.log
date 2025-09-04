@@ -1,0 +1,19 @@
+[2025-09-03T02:28:30.989+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-09-02T00:00:00+00:00 [queued]>
+[2025-09-03T02:28:30.995+0200] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-09-02T00:00:00+00:00 [queued]>
+[2025-09-03T02:28:30.995+0200] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2025-09-03T02:28:31.005+0200] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): check_data> on 2025-09-02 00:00:00+00:00
+[2025-09-03T02:28:31.016+0200] {standard_task_runner.py:57} INFO - Started process 29134 to run task
+[2025-09-03T02:28:31.023+0200] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_detection_pipeline', 'check_data', 'scheduled__2025-09-02T00:00:00+00:00', '--job-id', '57', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline.py', '--cfg-path', '/var/folders/jw/3gjd6ln50hq0ww6wh8twy1780000gn/T/tmp_asd_67k']
+[2025-09-03T02:28:31.026+0200] {standard_task_runner.py:85} INFO - Job 57: Subtask check_data
+[2025-09-03T02:28:31.066+0200] {task_command.py:416} INFO - Running <TaskInstance: fraud_detection_pipeline.check_data scheduled__2025-09-02T00:00:00+00:00 [running]> on host macbook-pro-de-adeline-1.home
+[2025-09-03T02:28:31.116+0200] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-science-team' AIRFLOW_CTX_DAG_ID='fraud_detection_pipeline' AIRFLOW_CTX_TASK_ID='check_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-02T00:00:00+00:00'
+[2025-09-03T02:28:31.121+0200] {logging_mixin.py:154} WARNING - 2025-09-03 02:28:31,120 - fraud_detection - INFO - 🔍 Démarrage de la vérification des données...
+[2025-09-03T02:28:31.120+0200] {fraud_pipeline.py:94} INFO - 🔍 Démarrage de la vérification des données...
+[2025-09-03T02:28:31.125+0200] {logging_mixin.py:154} WARNING - 2025-09-03 02:28:31,124 - fraud_detection - INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-09-03T02:28:31.124+0200] {fraud_pipeline.py:104} INFO - Chargement des données depuis: /Users/adelinerobinet/Documents/Projets Python/exam-fluzz-fraud-detection/adeline/data/raw/creditcard.csv
+[2025-09-03T02:28:32.736+0200] {logging_mixin.py:154} WARNING - 2025-09-03 02:28:32,734 - fraud_detection - INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-09-03T02:28:32.734+0200] {fraud_pipeline.py:150} INFO - ✅ Validation terminée: 284807 lignes, 0.173% fraudes
+[2025-09-03T02:28:32.741+0200] {python.py:194} INFO - Done. Returned value was: {'status': 'success', 'message': 'Dataset valide', 'data_quality': {'rows_count': 284807, 'columns_count': 31, 'missing_percentage': 0.0, 'fraud_percentage': 0.1727485630620034, 'imbalance_ratio': 577.8760162601626}, 'business_validation': {'time_range_valid': True, 'amount_range_valid': True, 'class_values_valid': True}, 'class_distribution': {0: 284315, 1: 492}}
+[2025-09-03T02:28:32.762+0200] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=fraud_detection_pipeline, task_id=check_data, execution_date=20250902T000000, start_date=20250903T002830, end_date=20250903T002832
+[2025-09-03T02:28:32.826+0200] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-03T02:28:32.850+0200] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
