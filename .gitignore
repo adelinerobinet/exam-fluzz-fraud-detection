@@ -257,7 +257,8 @@ mlruns/
 .mlflow/
 
 # Préparation orale (contenu privé)
-oral/
+oral/*
+!oral/slide-presentation.pdf
 
 # ============================================================================
 # CONSERVATION EXPLICITE (GARDER CES FICHIERS)
